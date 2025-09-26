@@ -1,0 +1,23 @@
+PODS:
+  - Flutter (1.0.0)
+  - ZoomSDK (5.17.11.14222)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - ZoomSDK (~> 5.17.10)
+
+SPEC REPOS:
+  trunk:
+    - ZoomSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  ZoomSDK: c65e430bb732264a206f5d72a60294954746cda8
+
+PODFILE CHECKSUM: 50acdac6b1dd025bb5943b407c3439affdad1706
+
+COCOAPODS: 1.16.2

@@ -1,0 +1,126 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.zoom_demo_app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    // Important for the D8 desugaring error
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.zoom_demo_app"
+        minSdk = 26
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            signingConfig = signingConfigs.debug
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    // Add packaging options to handle missing headset SDK classes
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libjsc.so'
+    }
+}
+
+dependencies {
+   // Local Zoom SDK AARs
+    implementation fileTree(dir: "libs", include: ["*.aar"])
+
+    // UI + support libs
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.airbnb.android:lottie:6.4.1'
+
+    // ExoPlayer for Zoom media layouts
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+
+    // Tink (fixes AesSivKeyManager ClassNotFound)
+    implementation 'com.google.crypto.tink:tink-android:1.13.0'
+
+    // WorkManager (Zoom uses it under the hood)
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+
+    // Glide (needed by Zoom SDK)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+
+    // Lifecycle (provides RepeatOnLifecycleKt)
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.7.0'
+
+    // Jetpack Compose runtime/UI (Zoom uses ComposeView)
+    implementation platform('androidx.compose:compose-bom:2024.06.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.foundation:foundation'
+    implementation 'androidx.compose.runtime:runtime'
+    implementation 'androidx.compose.material3:material3'
+
+    // Compose integration
+    implementation 'androidx.activity:activity-compose:1.9.0'
+
+    // Coil (image loading used by Zoom's Compose screens)
+    implementation 'io.coil-kt:coil:2.6.0'
+    implementation 'io.coil-kt:coil-compose:2.6.0'
+    implementation 'io.coil-kt:coil-gif:2.6.0'
+    implementation 'io.coil-kt:coil-svg:2.6.0'
+    implementation 'io.coil-kt:coil-video:2.6.0'
+
+    // Additional UI components
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    // AndroidX WebKit
+    implementation 'androidx.webkit:webkit:1.10.0'
+
+    // ViewBinding support (required by Zoom SDK)
+    implementation 'androidx.databinding:viewbinding:8.1.4'
+
+    // Multidex + desugaring
+    implementation 'androidx.multidex:multidex:2.0.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+
+    // RxJava 3 required by Zoom SDK
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.8'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    
+} 
+
+flutter {
+    source = "../.."
+}
