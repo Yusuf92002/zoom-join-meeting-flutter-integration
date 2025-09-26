@@ -53,16 +53,16 @@ Follow these steps to create a short-lived Participant JWT for local testing:
 1. Create an app in Zoom App Marketplace (choose the app type that exposes Meeting SDK credentials).  
    The screenshot below demonstrates creating a General/Meeting SDK app:  
 
-   <img src="" alt="Screenshot (400)" width="800"/>
+   <img src="https://github.com/user-attachments/assets/1188622a-efc7-4ab9-817f-e10f6b6e6c10" alt="Screenshot (400)" width="800"/>
 
 2. In the app configuration enable the Meeting SDK Embed options and note the platform SDK versions if you need native SDKs:  
 
-   <img src="" alt="Screenshot (401)" width="800"/>  
-   <img src="" alt="Screenshot (402)" width="800"/>
+   <img src="https://github.com/user-attachments/assets/04e3a295-c338-4b67-953e-01553a11aca8" alt="Screenshot (401)" width="800"/>  
+   <img src="https://github.com/user-attachments/assets/1650c679-9d46-435a-9087-c401c8e70040" alt="Screenshot (402)" width="800"/>
 
 3. Copy the Client ID (AppKey) and Client Secret from the app **Basic Information** page:  
 
-   <img src="" alt="Screenshot (403)" width="800"/>
+   <img src="https://github.com/user-attachments/assets/8efc4a9d-b3d1-4957-bb4a-e743e58b48c1" alt="Screenshot (403)" width="800"/>
 
 4. Open the Meeting SDK docs and use the **"Test SDK JWT generator"** tab. Enter:  
    - Meeting SDK AppKey (Client ID)  
@@ -72,7 +72,7 @@ Follow these steps to create a short-lived Participant JWT for local testing:
 
    Generate the JWT and copy the token:  
 
-   <img src="" alt="Screenshot (404)" width="800"/>
+   <img src="https://github.com/user-attachments/assets/d291bcc5-f147-4428-a65b-5c2cccff502f" alt="Screenshot (404)" width="800"/>
 
 5. Use that token for local development by exporting it as an environment variable, or paste it into the debug configuration. The app can then use the token to join as a Participant.
 
