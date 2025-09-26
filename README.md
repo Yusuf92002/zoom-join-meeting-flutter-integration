@@ -106,7 +106,7 @@ This repository's `.gitignore` already excludes these folders so you can keep th
 - Contributions are welcome. Open an issue or a pull request. Do not add secrets to commits.
 
 ## License
-- MIT
+- [MIT](LICENSE)
 
 ## Credits
 - Demo prepared to illustrate embedding Zoom meeting join functionality in a Flutter application while following secure practices for development and production.
